@@ -86,3 +86,5 @@ class Networks:
             loss=tf.keras.losses.CategoricalCrossentropy(), \
             metrics=['accuracy'])
         return model
+
+    

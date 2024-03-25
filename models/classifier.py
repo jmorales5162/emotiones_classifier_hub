@@ -18,7 +18,6 @@ class Classifier(Model):
         self.metrics.initSeed()
         self.classifier = KNeighborsClassifier(5)
 
-
     def train(self, x, y, params):
         if self.classifier.__class__.__name__ == "Networks":
             for i in range(params['iterations']):
@@ -37,7 +36,6 @@ class Classifier(Model):
                     callbacks=self.classifier.callbacks)
                 predict = self.classifier.net.predict(X_test, batch_size=8)
                 self.metrics.log(np.argmax(Y_test, axis=1), np.argmax(predict,axis=1))
-
 
             self.metrics.calc_mean_dt(self.classifier.params) # Compute mean and typical deviation
             self.metrics.training_graph(progress)

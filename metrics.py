@@ -210,8 +210,9 @@ class Metrics:
             df = pd.DataFrame(metrics, index = ["LR solver = "+str(classifier.solver)])
             self.accuracyBoxPlot.append((r['test_accuracy'], params['type']+"-"+str(classifier.solver)))
         elif classifier.__class__.__name__ == "RandomForestClassifier":
-            df = pd.DataFrame(metrics, index = ["LR solver = "+str(classifier.n_estimators)])
+            df = pd.DataFrame(metrics, index = ["RF = "+str(classifier.n_estimators)])
             self.accuracyBoxPlot.append((r['test_accuracy'], params['type']+str(classifier.n_estimators)))
+
         self.listResults.append(df)
         df.to_excel(os.path.join(self.path, 'metrics.xlsx'))
 
@@ -223,9 +224,7 @@ class Metrics:
         ax.set_title('Modelos')
         ax.boxplot(list(results))
         ax.set_xticklabels(list(models), rotation=315)
-
         fig.savefig(os.path.join(self.cwd, self.folderName, 'boxplot.png'))
-
 
     def gardar_cm(self, test_orig, test_predicted):
         plt.figure(figsize=(10,6));
