@@ -1,0 +1,10 @@
+dataset/
+datasetFULL/
+emotion-recognition-dataset.zip
+__pycache__/
+models/__pycache__/
+Metricas.xlsx
+MetricasHogSVM.xlsx
+MetricasHogKNN.xlsx
+pesos.h5
+data.csv
