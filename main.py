@@ -46,14 +46,16 @@ if __name__ == "__main__":
         c.setClassifier(KNeighborsClassifier(i))
         c.train(px,py,Config.knnParams)
 
-    for i in Config.KERNEL:
+    """for i in Config.KERNEL:
         c.setClassifier(SVC(kernel=i))
         c.train(px,py,Config.svmParams)
-
+"""
     for i in Config.SOLVER:
         c.setClassifier(LogisticRegression(penalty=None, solver=i, max_iter=Config.MAX_ITER, multi_class=Config.MULTI_CLASS))
         c.train(px,py,Config.lrParams)
 
+    c.writeResults()
+"""
     for i in Config.N_ESTIMATORS:
         c.setClassifier(RandomForestClassifier(n_estimators=i))
         c.train(px,py,Config.rfParams)
@@ -75,6 +77,6 @@ if __name__ == "__main__":
     # Fine Tunning VGG19
     c.setClassifier(Networks(Config.params3))
     c.train(x,y,Config.trainParams)
-
-    c.writeResults()
+"""
+    
     

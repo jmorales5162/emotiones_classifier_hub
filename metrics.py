@@ -27,7 +27,7 @@ class Metrics:
             self.resultados.append(self.metricas.copy())
         self.y_orixinal = None
         self.y_predecida = None
-        self.folderName = "training_"+datetime.now().strftime("%d%m%Y_%H_%M")
+        self.folderName = "training_"+datetime.now().strftime("%d_%m_%Y_%H_%M")
         self.cwd = os.path.dirname(__file__)
         self.accuracyBoxPlot = []
         self.listResults = []
@@ -221,7 +221,9 @@ class Metrics:
         fig, ax = plt.subplots()
         results, models = zip(*self.accuracyBoxPlot)
         ax.set_title('Modelos')
-        ax.boxplot(list(results), labels=list(models))
+        ax.boxplot(list(results))
+        ax.set_xticklabels(list(models), rotation=315)
+
         fig.savefig(os.path.join(self.cwd, self.folderName, 'boxplot.png'))
 
 

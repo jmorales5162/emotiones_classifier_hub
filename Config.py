@@ -3,7 +3,7 @@ SIZE = (112, 112)
 datasetName = "datasetFULL"
 path = os.path.join(os.path.dirname(__file__), datasetName)
 NC = len(os.listdir(path)) # Numero de clases
-TRAIN_ITEMS = 1200 # Numero de imaxes que colle de cada clase para adestrar (Max 1200)
+TRAIN_ITEMS = 50 # Numero de imaxes que colle de cada clase para adestrar (Max 1200)
 SEED = None
 
 ##############################
@@ -12,15 +12,17 @@ SEED = None
 
 CV = 10
 #kNN
-NEIGHBORS = [3,4,5]
+#NEIGHBORS = [3,4,5]
+NEIGHBORS = [3]
 # SVM
-KERNEL = ["poly", "linear"] 
+#KERNEL = ["poly", "linear"] 
 # LR
-SOLVER = ['lbfgs', 'newton-cg']
+#SOLVER = ['lbfgs', 'newton-cg']
+SOLVER = ['lbfgs']
 MAX_ITER = 10000
 MULTI_CLASS = "multinomial"
 #RF
-N_ESTIMATORS = [10,30,50]
+#N_ESTIMATORS = [10,30,50]
 #metrics = ['accuracy','recall','precision','f1','roc_auc']
 
 ##############################
