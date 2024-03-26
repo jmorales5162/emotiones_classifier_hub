@@ -20,8 +20,6 @@ class Networks:
         elif self.type == "VGG19":
             self.net = self.fineTunning("VGG19")
 
-
-
         self.callbacks = []
         self.callbacks.append(tf.keras.callbacks.EarlyStopping(monitor='val_loss',
             min_delta=self.min_delta, patience=self.patience,
@@ -55,7 +53,6 @@ class Networks:
             loss=tf.keras.losses.CategoricalCrossentropy(), \
             metrics=['accuracy'])
         return model
-
 
     def simple(self):
         model = Sequential()

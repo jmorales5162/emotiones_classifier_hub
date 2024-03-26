@@ -54,8 +54,6 @@ class Classifier(Model):
     def writeResults(self):
         self.metrics.writeResults()
 
-
-
     def predict(self, img):
         print(obj)
 

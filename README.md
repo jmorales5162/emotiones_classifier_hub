@@ -1,4 +1,4 @@
-## Trabajo de Aprendizaxe Automatico I
+## Trabajo de Aprendizaje Automatico I
 
 ### Instalacion en linux
 	

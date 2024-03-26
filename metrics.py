@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 from statsmodels.stats.multicomp import pairwise_tukeyhsd, MultiComparison
 matplotlib.use('TkAgg')
 
-
 class Metrics:
     def __init__(self, params, path, seed):
         self.seed = seed
@@ -33,7 +32,6 @@ class Metrics:
         self.listResults = []
         os.mkdir(os.path.join(self.cwd, self.folderName))
 
-
     def log(self, y_orixinal, y_predecida):
         self.y_orixinal = y_orixinal; self.y_predecida = y_predecida
         cnf_matrix = self.compute_confusion_matrix(y_orixinal, y_predecida)
@@ -42,7 +40,6 @@ class Metrics:
         for i,key in enumerate(self.metricas):
             for j,clase in enumerate(self.clases):
                 self.resultados[j][key] = np.append(self.resultados[j][key], metrica[i][j])
-
 
     def calc_mean_dt(self,params):
         print(self.resultados)
@@ -76,7 +73,6 @@ class Metrics:
 
         #df.to_excel(os.path.join(self.path, self.folderName, 'metrics.xlsx'))
 
-
         self.path = os.path.join(self.cwd, self.folderName, params['type'])
         os.mkdir(self.path)
         f = open(os.path.join(self.path,"metricas.txt"), "w")
@@ -97,7 +93,6 @@ class Metrics:
         acc = tuple([np.mean(tmp[:,j]) for j in range(len(tmp[0]))])
         self.accuracyBoxPlot.append(( acc , params['type']))
         
-
     def compute_total_classification_metrics(self, cnf_matrix):
         FP = cnf_matrix.sum(axis=0) - np.diag(cnf_matrix)
         FN = cnf_matrix.sum(axis=1) - np.diag(cnf_matrix)
@@ -134,8 +129,6 @@ class Metrics:
         # Especificidade ou "true negative rate"
         TNR = TN / (TN + FP)
 
-
-
     def compute_confusion_matrix(self, test_orig, test_predicted):
         print("test_orig: " + str(test_orig) + "   //   " + "test_predicted" + str(test_predicted))
         num_classes = len(np.unique(test_orig))
@@ -145,7 +138,6 @@ class Metrics:
             matrix[t1,t2] += 1
         print(matrix)
         return matrix
-
 
     def initSeed(self):
         if self.seed == None:
@@ -199,7 +191,7 @@ class Metrics:
         metrics['Especificidad'] = np.mean(TNR)
         
         df = None
-        print("holaaaaaaaaaaaaaaaa " + classifier.__class__.__name__)
+        print(classifier.__class__.__name__)
         if classifier.__class__.__name__ == "KNeighborsClassifier":
             df = pd.DataFrame(metrics, index = ["KNN n_neighbors = "+str(classifier.n_neighbors)])
             self.accuracyBoxPlot.append((r['test_accuracy'], params['type']+str(classifier.n_neighbors)))
@@ -263,7 +255,6 @@ class Metrics:
         plt.savefig(os.path.join(self.path, "graf.png"))
         plt.clf()
         self.gardar_cm(self.y_orixinal, self.y_predecida)
-
 
     def getMetrics(self):
         return self.listMetrics
