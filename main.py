@@ -72,7 +72,8 @@ if __name__ == "__main__":
     # Fine Tunning VGG19
     c.setClassifier(Networks(Config.params3))
     c.train(x,y,Config.trainParams)
-
+    
     c.writeResults()
+    
     
     
