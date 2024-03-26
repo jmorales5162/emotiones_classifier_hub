@@ -199,7 +199,7 @@ class Metrics:
         metrics['Especificidad'] = np.mean(TNR)
         
         df = None
-        print(classifier.__class__.__name__)
+        print("holaaaaaaaaaaaaaaaa " + classifier.__class__.__name__)
         if classifier.__class__.__name__ == "KNeighborsClassifier":
             df = pd.DataFrame(metrics, index = ["KNN n_neighbors = "+str(classifier.n_neighbors)])
             self.accuracyBoxPlot.append((r['test_accuracy'], params['type']+str(classifier.n_neighbors)))
